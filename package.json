@@ -58,13 +58,14 @@
     "edge/"
   ],
   "scripts": {
-    "build": "npm install && npm run build:clean && npm run build:src && npm run build:next && npm run build:express && npm run build:koa && npm run build:edge",
+    "build": "npm run build:clean && npm run build:src && npm run build:next && npm run build:express && npm run build:koa && npm run build:edge && npm run ",
     "build:clean": "rimraf dist/ next/dist express/dist edge/dist koa/dist",
     "build:edge": "tsup edge/index.ts -d edge/dist",
     "build:express": "tsup express/index.ts -d express/dist",
     "build:koa": "tsup koa/index.ts -d koa/dist",
     "build:next": "tsup next/index.ts -d next/dist",
     "build:src": "tsup src/index.ts",
+    "postinstall": "npm run postpublish",
     "installExamples": "(cd examples/express && npm ci) && (cd examples/koa && npm ci) && (cd examples/next.js && npm ci) && (cd examples/next.js-typescript && npm ci)",
     "lint": "eslint --ext ts,js,jsx,tsx src/ next/ express/ koa/ edge/ examples/",
     "prepublishOnly": "npm run build && cp next/dist/* next/ && cp express/dist/* express/ && cp edge/dist/* edge/ && cp koa/dist/* koa/",
@@ -75,8 +76,7 @@
     "watch:express": "tsup express/index.ts -d express/dist --watch express/index.ts",
     "watch:koa": "tsup koa/index.ts -d koa/dist --watch koa/index.ts",
     "watch:next": "tsup next/index.ts -d next/dist --watch next/index.ts",
-    "watch:src": "tsup src/index.ts --watch src/index.ts",
-    "prepare": "npm run build"
+    "watch:src": "tsup src/index.ts --watch src/index.ts"
   },
   "prettier": {
     "trailingComma": "all"
