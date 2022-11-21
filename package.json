@@ -58,7 +58,7 @@
     "edge/"
   ],
   "scripts": {
-    "build": "npm run build:clean && npm run build:src && npm run build:next && npm run build:express && npm run build:koa && npm run build:edge",
+    "build": "npm install && npm run build:clean && npm run build:src && npm run build:next && npm run build:express && npm run build:koa && npm run build:edge",
     "build:clean": "rimraf dist/ next/dist express/dist edge/dist koa/dist",
     "build:edge": "tsup edge/index.ts -d edge/dist",
     "build:express": "tsup express/index.ts -d express/dist",
